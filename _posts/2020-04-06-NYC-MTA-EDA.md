@@ -24,6 +24,7 @@ So we decided to find the difference between consecutive rows and pasted the val
 
 ### More Issues
 
+
 ![2nd_image](/images/blog1_second_image.png)
 
 
@@ -48,6 +49,4 @@ However, this was not enough. As data scientists, we need to utilize our own dom
 
 ![5th_image](/images/top20bar.png)
 
-And... we’re done! Yet, despite finding an acceptable solution to the project, this was not the most interesting part of this experience for me. I learned why data science is such a coveted field. It’s pretty simple to learn the python necessary to find an answer. With a few pandas groupby functions and some tinkering in matplotlib we were able to produce the chart above. However, the “real work” was understanding the data, turning it into something usable, and then dealing with the outliers. You might say that even that process is pretty standard. However, for this dataset there were some unique quirks and I’m sure for other datasets there will be unique quirks that make that process uniquely difficult. A true data scientist needs to use an artful combination of understanding the data and the problem (i.e. NYC subway knowledge) to enhance their analysis and make it something special. And this is why two data scientists can approach the same dataset and produce different insights. 
-
-Thanks!
+And... we’re done! Yet, despite finding an acceptable solution to the project, this was not the most interesting part of this experience for me. I learned why data science is so coveted. It's pretty simple to learn the python necessary to find an answer. With a few pandas groupby functions and some tinkering in matplotlib we were able to produce the chart above. However, the “real work” was understanding the data, turning it into something usable, and then dealing with the outliers. You might say that even that process is pretty standard. However, for this dataset there were some unique quirks and I’m sure for other datasets there will be unique quirks that make that process uniquely difficult. A true data scientist needs to artfully combine an understanding the data and the problem (i.e. NYC subway knowledge) to enhance their analysis and make it something special. I'm looking forward to getting better at this skill!
