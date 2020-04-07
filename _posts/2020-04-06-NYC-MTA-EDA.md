@@ -11,7 +11,7 @@ As of now, we are at the end of week 1 and we have finished our first project. T
 
 This is all the direction we were given but from this it’s clear that we need to find out what the busiest subway stations are. So first we went to the MTA website to grab subway turnstile data which is easily downloadable but the data was confusing and hard to read. 
 
-![1st_image](/images/blog1_first_image)
+![1st_image](/images/blog1_first_image.png)
 
 ### So this is the data?
 
@@ -24,14 +24,14 @@ So we decided to find the difference between consecutive rows and pasted the val
 
 ### More Issues
 
-![2nd_image](/images/blog1_second_image)
+![2nd_image](/images/blog1_second_image.png)
 
 
 However, this newly created entries_diff column had a number of problems. For one, there were incredibly large numbers that were too high to be possible. In other words, there were outliers - a common problem that data scientists run into.
 
 But although this is a common problem, why it was happening wasn’t so obvious. The way the data is structured each row shows the entries cumulative total for a single turnstile in 4 hour increments per day. So there are 6 rows for each turnstile per day so lets say you have data for 7 days, every 42 rows the turnstile will shift so the entries and exit values will be wildly different between the rows. Thus, this differential method creates massive outliers that are incorrect. 
 
-![3rd_image](/images/blog1_third_image)
+![3rd_image](/images/blog1_third_image.png)
 
 
 ### Solution
