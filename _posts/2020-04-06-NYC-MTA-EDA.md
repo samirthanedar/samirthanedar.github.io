@@ -11,7 +11,7 @@ As of now, we are at the end of week 1 and we have finished our first project. T
 
 This is all the direction we were given but from this it’s clear that we need to find out what the busiest subway stations are. So first we went to the MTA website to grab subway turnstile data which is easily downloadable but the data was confusing and hard to read. 
 
-[1st_image]({{ site.url }}/images/blog1_first_image)
+[1st_image]({{site.url}}/images/blog1_first_image)
 
 ### So this is the data?
 
@@ -24,14 +24,14 @@ So we decided to find the difference between consecutive rows and pasted the val
 
 ### More Issues
 
-[2nd_image]({{ site.url }}/images/blog1_second_image)
+[2nd_image]({{site.url}}/images/blog1_second_image)
 
 
 However, this newly created entries_diff column had a number of problems. For one, there were incredibly large numbers that were too high to be possible. In other words, there were outliers - a common problem that data scientists run into.
 
 But although this is a common problem, why it was happening wasn’t so obvious. The way the data is structured each row shows the entries cumulative total for a single turnstile in 4 hour increments per day. So there are 6 rows for each turnstile per day so lets say you have data for 7 days, every 42 rows the turnstile will shift so the entries and exit values will be wildly different between the rows. Thus, this differential method creates massive outliers that are incorrect. 
 
-[3rd_image]({{ site.url }}/images/blog1_third_image)
+[3rd_image]({{site.url}}/images/blog1_third_image)
 
 
 ### Solution
@@ -42,11 +42,11 @@ As you can see here, on March 30th, April 6th and April 13th the values look way
 
 So after that, we were ready to display our top 20 stations in terms of entries over our three week period. As you can see below these tend to match up pretty well with top station rankings found elsewhere online.
 
-[4th_image]({{ site.url }}/images/techtop20.png)
+[4th_image]({{site.url}}/images/techtop20.png)
 
 However, this was not enough. As data scientists, we need to utilize our own domain knowledge to improve our recommendations. First of all, this is a tech event so we should probably focus on subway stations near large portions of tech companies and send teams out on weekdays to make sure we’re most likely to see as many tech workers as possible. Also, as you start to understand more about the New York City subway station, it becomes apparent that some of these bars are false. For instance, the 23rd St station depicted in the chart above is a combination of several subway stations on 23rd st so you cannot count that entries total as one station. The same goes for 86 St and 125 St. After combining all of these insights we then landed on 10 stations to target for the organization’s street teams:
 
-[5th_image]({{ site.url }}/images/top20bar.png)
+[5th_image]({{site.url}}/images/top20bar.png)
 
 And... we’re done! Yet, despite finding an acceptable solution to the project, this was not the most interesting part of this experience for me. I learned why data science is such a coveted field. It’s pretty simple to learn the python necessary to find an answer. With a few pandas groupby functions and some tinkering in matplotlib we were able to produce the chart above. However, the “real work” was understanding the data, turning it into something usable, and then dealing with the outliers. You might say that even that process is pretty standard. However, for this dataset there were some unique quirks and I’m sure for other datasets there will be unique quirks that make that process uniquely difficult. A true data scientist needs to use an artful combination of understanding the data and the problem (i.e. NYC subway knowledge) to enhance their analysis and make it something special. And this is why two data scientists can approach the same dataset and produce different insights. 
 
