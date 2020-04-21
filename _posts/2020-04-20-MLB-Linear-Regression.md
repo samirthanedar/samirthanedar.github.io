@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Interpreting Coefficients for MLB Linear Regression Models:
+title: Interpreting Coefficients for MLB Linear Regression Models
 ---
 
 For my second project at Metis I decided to use linear regression to see if I could predict how good of a career a Major League Baseball (MLB) player would have based on their minor league statistics. I imagined that I had been asked to do this by a professional baseball General Manager (GM). This is useful because the teams draft 18-20 year olds who need to spend years in the minor leagues before they have the skills necessary to be effective players at the top level. So while GMs are of course very focused on the current professional team, they need to always be developing talent that will be ready to contribute to the major league team years down the line. In fact, they need to know exactly how good each player on their minor league teams is expected to be in the majors in order to make decisions about trades and future draft picks.
@@ -16,8 +16,6 @@ First, I trained an OLS model using the Stats Models package in python and took 
 
 
 Instantly, it was clear that we would not be using this model to predict MLB ABs for players because the adjusted R squared value was 0.359. That means the independent variables were only responsible for 35.9% of the variance in the dependent variable. So if we try to predict MLB ABs for players we’re going to be off most of the time. However, that doesn’t mean this model is useless. We can still make meaningful conclusions from the coefficients for each independent variable. Below you can see the coefficients for each feature or independent value in the model. 
-
-As you can see above, there are many column titles that don’t mean anything to you unless you work at MTA (e.g. C/A or SCP). The worst part is the Entries and Exits columns. From investigating it, you can see that those columns are showing cumulative totals for each timestamp. For instance, on March 30th, at 4am there were 6,999,084 entries for a turnstile at 59 ST station and at 8am there were 6,999,107 entries so between 4 and 8am that day there were 23 people that entered the station through that turnstile. 
 
 **Feature** | **Coefficients**
 ------------ | -------------
