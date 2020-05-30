@@ -53,8 +53,6 @@ For people who “yes” to the question: “Do you personally own a gun?”, 61
 
 Those are two questions which divided the group of respondents the best. As you go down the list, when you split the group of people by how they answered each question the results get closer and closer to 50-50 splits. As you can imagine, this is not as helpful for me when I’m trying to predict which party someone will vote for.
 
-First, I trained an OLS model using the Stats Models package in python and took a look to see what my baseline model showed. The dependent variable or value we are trying to predict is MLB AB per season. I chose to add “per season” in order to normalize the data a bit. Players have careers of different lengths so it was not fair to compare apples to apples.
-
 ### And why might this be helpful?
 
 Again, I’d like to say that this model should not be used to generalize anything about the U.S. population. However, let’s imagine for a second that we collected this information ourselves from a randomly sampled portion of the population and we are advising a democratic candidate. This might tell us a few things:

@@ -36,7 +36,7 @@ In December there were only 300 tweets with the search term “coronavirus”. N
 
 ### February
 
-![feb_topics](/images/jan_feb_apri_topics.png)
+![feb_topics](/images/jan_feb_mar_topics.png)
 
 In February, at this point the Covid-19 outbreak was pretty bad in China. So the “Initial Chinese Outbreak” topic is still the biggest topic. However, in February the disease had spread to Italy and you see this topic peaking. In addition at this point, it’s becoming clear that this virus is spreading very fast so as a result you see topics about stopping the spread peaking. This is also when global events start to get cancelled to help to reduce the spread. 
 
