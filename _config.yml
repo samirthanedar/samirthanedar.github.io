@@ -3,7 +3,7 @@ permalink:           pretty
 
 # Setup
 title:               Samir's Blog
-tagline:             
+#tagline:             
 url:                 http://samirthanedar.github.io
 paginate:            2
 baseurl:             ""
