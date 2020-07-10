@@ -1,36 +1,34 @@
 ---
 layout: post
-title: How to build a recommendation engine based on Twitter?
+title: How to build a recommendation engine based on Twitter profiles
 ---
 
-In 2020 with everything going on plus the polarization in this country, it’s nearly impossible to find someone who doesn’t have an opinion (good or bad) on the President of the United States. However, this year it’s become more clear how important local politicians and other elected officials are to our day-to-day lives. President Barack Obama said it best in his [recent Medium post](https://medium.com/@BarackObama/how-to-make-this-moment-the-turning-point-for-real-change-9fa209806067) discussing the George Floyd killing.
+With the events of 2020 plus the polarization in this country, it’s nearly impossible to find someone who doesn’t have an opinion (good or bad) on the President of the United States. However, this year it’s become more clear how important local politicians and other elected officials are to our day-to-day lives. President Barack Obama said it best in his [recent Medium post](https://medium.com/@BarackObama/how-to-make-this-moment-the-turning-point-for-real-change-9fa209806067) discussing the George Floyd killing.
 
 > ...the elected officials who matter most in reforming police departments and the criminal justice system work at the state and local levels
+
 
 Arguably this is the same for most issues that we care about. For instance, if you don’t like how Covid-19 was handled, part of the blame may be on your local officials. Because of this, for my passion project at Metis I decided to build a recommendation engine that would recommend local politicians to vote for in your Bay Area county. At the very least, I wanted to help myself be a more informed local voter!
 
 ### Data Collection
 
-For my third project, I predicted which political party people will vote for based on how they answer personal questions. Initially, I thought I would recommend local politicians based on the same dataset but we don’t know how politicians would answer these questions. In other words, the dataset I wanted didn’t really exist. These days, Twitter represents an easy way to quickly grab data on each politician's beliefs. Thus, I decided to generate my own dataset and find similarities by comparing Twitter profiles. I used the [GetOldTweets API](https://github.com/Mottl/GetOldTweets3) to scrape tweets for all of them. Below is an example of an API call I ran in Command Line:
+For my third project, I predicted which political party people will vote for based on how they answer personal questions. Initially, I thought I would recommend local politicians based on the same dataset but we don’t know how politicians would answer these questions. In other words, the dataset I wanted didn’t really exist. These days, Twitter represents an easy way to quickly grab data on each politician's beliefs. Thus, I decided to generate my own dataset and find similarities by comparing Twitter profiles. I used the [GetOldTweets API](https://github.com/Mottl/GetOldTweets3) to scrape tweets for all of them. Below is an example of an API call I ran in command line to scrape tweets:
 
 ```GetOldTweets3 --username "SpeakerPelosi" --since 2019-03-03 --until 2020-03-03 --maxtweets 1000```
 
-So there were 108 politicians running for either State Senate, State Assembly or the U.S. House of Representatives on March 3rd, 2020. Only 61% of those politicians had a “good” Twitter profile and had more than 10 tweets in the year preceding the election. Also 83% of democrats had a “good” profile and only 30% of Republicans could say the same. Because of this, I decided not to go more “local” with politicians as the percentage of them with usable Twitter profiles would probably be even worse. So we’re already seeing the limits of using Twitter and on focusing on the Bay Area. Here the Democrats tend to dominate the elections and this model will be biased towards picking Democrats as a result. Keep this in mind for later!
+So there were 108 politicians running for either State Senate, State Assembly or the U.S. House of Representatives on March 3rd, 2020. Only 61% of those politicians had a “useful” Twitter profile which means they had more than 10 tweets in the year preceding the election. Also 83% of democrats had a “useful” profile and only 30% of Republicans could say the same. Because of this, I decided not to include more local level politicians as the percentage of them with usable Twitter profiles would probably be even worse. So we’re already seeing the limits of using Twitter and on focusing on the Bay Area. Here the Democrats tend to dominate the elections and this model will be biased towards picking Democrats as a result. Keep this in mind for later!
 
 ### Vectorization
 
 Next, I cleaned the data and then used TF-IDF to create a document-term matrix. This tells us how often a term appeared in each document (i.e. tweet). 
 
-```
-tfidf = TfidfVectorizer(stop_words=custom_stop_words,ngram_range=(1,3), min_df = 5, max_df=.9, binary=True)
+```tfidf = TfidfVectorizer(stop_words=custom_stop_words,ngram_range=(1,3), min_df = 5, max_df=.9, binary=True)
 doc_word = tfidf.fit_transform(result)
 doc_word_df = pd.DataFrame(doc_word.toarray(),index=df.drop_duplicates(),columns=tfidf.get_feature_names())
 ```
 
 Afterwards, I summed up the columns of the matrix to get a one row politician-term vector. Essentially, this tells you often a politician uses various words because higher values for a word will mean they used that word across many tweets. 
-
-```
-#sum up all columns
+``` #sum up all columns
 data = np.zeros((1,len(doc_word_df.columns)))
 for i,column in enumerate(doc_word_df.columns):
 	data[0,i] = doc_word_df[column].sum()
@@ -38,7 +36,6 @@ for i,column in enumerate(doc_word_df.columns):
 #put the sums into a new dataframe
 final = pd.DataFrame(data,index=[twitter_handle], columns=doc_word_df.columns)
 ```
-
 The final result is what you see below:
 
 ![pelosi_vector](/images/pelosi_vectors.png)
@@ -55,11 +52,9 @@ So now we have vectors for all politicians and can use similarity metrics like c
 
 According to this, Scott Weiner and DeAnna Lorraine used the word gun the most. If you knew nothing about these politicians you might think they were similar but from a quick glance at the tweets we see very different sentiments:
 
-#### Scott Weiner
-
 ![scott_weiner_tweet](/images/scott_weiner_tweet.png)
 
-#### DeAnna Lorraine
+
 
 ![deanne_lorraine_tweet](/images/deanna_lorraine_tweet.png)
 
