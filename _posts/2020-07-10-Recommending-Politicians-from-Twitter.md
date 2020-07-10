@@ -56,13 +56,11 @@ According to this, Scott Weiner and DeAnna Lorraine used the word gun the most. 
 
 ![scott_weiner_tweet](/images/scott_weiner_tweet.png) ![deanne_lorraine_tweet](/images/deanna_lorraine_tweet.png)
 
-As you can see very different beliefs on guns! There is definitely a need to add sentiment analysis here to try and find the difference between these two types of tweets. But how should we add sentiment analysis? I experimented and realized adding a general sentiment column is not good enough given that the politician term vectors have thousands of columns. So I decided to take the top words that each politician used and find the sentiment for each one and input a new column for each word_sentiment in the politician-term vector. However, since I used VaderSentiment for this the sentiment analysis output is actually 4 things: a measure of positive sentiment, negative sentiment, neutral sentiment and compound (i.e. total) sentiment. So the final result is I added 4 new sentiment columns per top word. Below you can see a visualization created using Principal Component Analysis showing where these vectors would lie in a 2D space. 
-
-![2d_w_sentiment](/images/2d_w_sentiment.png)
+As you can see very different beliefs on guns! Sentiment Analysis seems like it should be able to help out here as one person is more positive about guns and the other is more negative. But how should we add sentiment analysis? I experimented and saw that adding a general sentiment column is not good enough given that the politician term vectors have thousands of columns. So I decided to take the top words that each politician used, find the sentiment for each one and input a new column for each word_sentiment in the politician-term vector. However, since I used VaderSentiment for this the sentiment analysis output is actually 4 things: measures of positive sentiment, negative sentiment, neutral sentiment and compound (i.e. total) sentiment. So ultimately I added 4 new sentiment columns per top word. 
 
 ### Similarity
 
-Great, now we are ready to make some recommendations. What similarity metric should we use to provide them? This answer was pretty simple. Since tweets have a variable length, I didn’t want that to play a part so we use cosine similarity rather than euclidean distances. By experimenting with both, the results also show that this is a better method.
+Great, now we are ready to make some recommendations. What similarity metric should we use to provide them? This answer was pretty simple. I didn't want the variable lengths of tweets to influence results so I used cosine similarity rather than euclidean distances. By experimenting with both, the results also show that this is a better method. To understand how exactly I incorporated sentiment analysis and cosine similarity check out the functions `create_sentiment_vectors`, `get_similarities`, and `recommendation` in twitter_recommender_api.py. 
 
 ### Final Result
 
