@@ -64,6 +64,7 @@ Two very different beliefs on guns! Sentiment Analysis should provide help here 
 Nancy Pelosi's sentiment ratings for tweets where she mentioned the word "Democrat":
 ![pelosi_democrat_sentiment](/images/pelosi_democrat_sentiment.png)
 
+
 Nancy Pelosi's sentiment ratings for tweets where she mentioned Senate Majority Leader Mitch McConnell's Twitter username:
 ![pelosi_mcconnell_sentiment](/images/pelosi_mcconnell_sentiment.png)
 
