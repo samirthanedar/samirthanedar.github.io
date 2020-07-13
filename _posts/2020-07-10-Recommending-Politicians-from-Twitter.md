@@ -12,11 +12,11 @@ Arguably this is the same for most issues that we care about. For instance, if y
 
 ### Data Collection
 
-For my third project, I predicted which political party people will vote for based on how they answer personal questions. Initially, I thought I would recommend local politicians based on the same dataset but we don’t know how politicians would answer these questions. In other words, the dataset I wanted didn’t really exist. These days, Twitter represents an easy way to quickly grab data on each politician's beliefs. Thus, I decided to generate my own dataset and find similarities by comparing Twitter profiles. I used the [GetOldTweets API](https://github.com/Mottl/GetOldTweets3) to scrape tweets for all of them. Below is an example of an API call I ran in command line to scrape tweets:
+In a previous project, I predicted which political party people will vote for based on how they answer personal questions. Initially, I thought I would recommend local politicians based on the same dataset but we don’t know how politicians would answer these questions. In other words, the dataset I wanted didn’t really exist. These days, Twitter is popular enough that most politicians will use it pretty frequently. Thus, I decided to generate my own dataset and find similarities by comparing Twitter profiles. I used the [GetOldTweets API](https://github.com/Mottl/GetOldTweets3) to scrape tweets for all of them. Below is an example of an API call I ran in command line to scrape tweets:
 
 ```GetOldTweets3 --username "SpeakerPelosi" --since 2019-03-03 --until 2020-03-03 --maxtweets 1000```
 
-There were 108 politicians running for either State Senate, State Assembly or the U.S. House of Representatives on March 3rd, 2020. Only 61% of those politicians had a “useful” Twitter profile which means they had more than 10 tweets in the year preceding the election. Splitting this out by party: 83% of democrats had a “useful” profile and only 30% of Republicans could say the same. Because of this, I decided not to include even more local level politicians in this model as the percentage of them with usable Twitter profiles would probably be even less. So we’re already seeing the limits of using Twitter and on focusing on the Bay Area. Here the Democrats tend to dominate the elections and this model will be biased towards picking Democrats as a result. Keep this in mind for later!
+There were 108 politicians running for either State Senate, State Assembly or the U.S. House of Representatives on March 3rd, 2020. After scraping, I realized only 61% of those politicians had a “useful” Twitter profile which means they had more than 10 tweets in the year preceding the election. Splitting this out by party: 83% of democrats had a “useful” profile and only 30% of Republicans could say the same. Because of this, I decided not to include even more local level politicians in this model as the percentage of them with usable Twitter profiles would probably be less. So we’re already seeing the limits of using Twitter and on focusing on the Bay Area. Here the Democrats tend to dominate the elections and this model will be biased towards picking Democrats as a result.
 
 ### Vectorization
 
@@ -56,7 +56,15 @@ According to this, Scott Weiner and DeAnna Lorraine used the word gun the most. 
 
 ![scott_weiner_tweet](/images/scott_weiner_tweet.png) ![deanne_lorraine_tweet](/images/deanna_lorraine_tweet.png)
 
-As you can see very different beliefs on guns! Sentiment Analysis seems like it should be able to help out here as one person is more positive about guns and the other is more negative. But how should we add sentiment analysis? I experimented and saw that adding a general sentiment column is not good enough given that the politician term vectors have thousands of columns. So I decided to take the top words that each politician used, find the sentiment for each one and input a new column for each word_sentiment in the politician-term vector. However, since I used VaderSentiment for this the sentiment analysis output is actually 4 things: measures of positive sentiment, negative sentiment, neutral sentiment and compound (i.e. total) sentiment. So ultimately I added 4 new sentiment columns per top word. 
+Two very different beliefs on guns! Sentiment Analysis should provide help here as one person is more positive about guns and the other is more negative. But how should we add sentiment analysis? I experimented and saw that adding a general sentiment column is not good enough given that the politician term vectors have thousands of columns. So I decided to take the top 200 words that each politician used, find the sentiment for each one and input a new column for each word's sentiment in the politician-term vector. However, since I used VaderSentiment for this the sentiment analysis output is actually 4 things: measures of positive sentiment, negative sentiment, neutral sentiment and compound (i.e. total) sentiment. So ultimately I added 4 new sentiment columns per top word. Here's how this looks for a couple of words:
+
+Nancy Pelosi's sentiment ratings for tweets where she mentioned the word "Democrat":
+![pelosi_democrat_sentiment](/images/pelosi_democrat_sentiment.png)
+
+Nancy Pelosi's sentiment ratings for tweets where she mentioned Senate Majority Leader Mitch McConnell:
+![pelosi_mcconnell_sentiment](/images/pelosi_mcconnell_sentiment.png)
+
+As you can see she is more negative than positive when discussing Mitch McConnell and more positive than negative when discussing democrats. This is also visible in the compound ranking. 
 
 ### Similarity
 
@@ -69,5 +77,9 @@ For my specific use case, I wanted to give recommendations for any inputted twit
 ![recommendations](/images/recommendations.png)
 
 Voila! We have built a recommendation engine for Bay Area politicians! I really hope this was useful and if you have any questions you can reach me at samirthanedar@gmail.com. In the meantime, please VOTE this November!
+
+Here's a video of the app being used:
+
+![flask_video](/images/flask_video.mp4)
 
 For access to all the code for this project you can go Github [here](https://github.com/samirthanedar/Recommending-Local-Politicians). You can also test the recommendation engine [here](https://politician-recommender.herokuapp.com/). 
