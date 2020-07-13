@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How to build a local politician recommendation engine using Twitter profiles
+title: How to build a voting recommendation engine using Twitter profiles
 ---
 
 With the events of 2020 plus the polarization in this country, it’s nearly impossible to find someone who doesn’t have an opinion (good or bad) on the President of the United States. However, this year it’s also become more clear how important local politicians and other elected officials are to our day-to-day lives. President Barack Obama said it best in his [recent Medium post](https://medium.com/@BarackObama/how-to-make-this-moment-the-turning-point-for-real-change-9fa209806067) discussing the George Floyd killing.
@@ -8,7 +8,7 @@ With the events of 2020 plus the polarization in this country, it’s nearly imp
 > ...the elected officials who matter most in reforming police departments and the criminal justice system work at the state and local levels
 
 
-Arguably this is the same for most issues that we care about. For instance, if you don’t like how Covid-19 was handled, part of the blame may be on your local officials. Because of this, for my passion project at Metis I decided to build a recommendation engine that would recommend local politicians to vote for in your Bay Area county. At the very least, I wanted to help myself be a more informed local voter!
+Arguably this is the same for most issues that we care about. For instance, if you don’t like how Covid-19 was handled, part of the blame may be on your local officials. Because of this, for my passion project at Metis I decided to build a recommendation engine that would recommend local politicians you should vote for in your Bay Area county. At the very least, I wanted to help myself be a more informed local voter!
 
 ### Data Collection
 
