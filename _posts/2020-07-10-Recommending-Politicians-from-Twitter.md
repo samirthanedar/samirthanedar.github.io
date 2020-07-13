@@ -52,6 +52,7 @@ So now we have vectors for all politicians and can use similarity metrics like c
 
 ![all_politicians_guns](/images/all_politicians_guns.png)
 
+
 According to this, Scott Weiner and DeAnna Lorraine used the word gun the most. If you knew nothing about these politicians you might think they were similar but from a quick glance at the tweets we see very different sentiments:
 
 ![scott_weiner_tweet](/images/scott_weiner_tweet.png) ![deanne_lorraine_tweet](/images/deanna_lorraine_tweet.png)
@@ -61,7 +62,7 @@ Two very different beliefs on guns! Sentiment Analysis should provide help here 
 Nancy Pelosi's sentiment ratings for tweets where she mentioned the word "Democrat":
 ![pelosi_democrat_sentiment](/images/pelosi_democrat_sentiment.png)
 
-Nancy Pelosi's sentiment ratings for tweets where she mentioned Senate Majority Leader Mitch McConnell:
+Nancy Pelosi's sentiment ratings for tweets where she mentioned Senate Majority Leader Mitch McConnell's Twitter username:
 ![pelosi_mcconnell_sentiment](/images/pelosi_mcconnell_sentiment.png)
 
 As you can see she is more negative than positive when discussing Mitch McConnell and more positive than negative when discussing democrats. This is also visible in the compound ranking. 
@@ -78,8 +79,4 @@ For my specific use case, I wanted to give recommendations for any inputted twit
 
 Voila! We have built a recommendation engine for Bay Area politicians! I really hope this was useful and if you have any questions you can reach me at samirthanedar@gmail.com. In the meantime, please VOTE this November!
 
-Here's a video of the app being used:
-
-![flask_video](/images/flask_video.mp4)
-
-For access to all the code for this project you can go Github [here](https://github.com/samirthanedar/Recommending-Local-Politicians). You can also test the recommendation engine [here](https://politician-recommender.herokuapp.com/). 
+For access to all the code for this project you can go to Github [here](https://github.com/samirthanedar/Recommending-Local-Politicians). You can also test the recommendation engine [here](https://politician-recommender.herokuapp.com/). 
