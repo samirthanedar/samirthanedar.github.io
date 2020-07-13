@@ -3,6 +3,8 @@ layout: post
 title: How to build a voting recommendation engine using Twitter profiles
 ---
 
+![voting](/images/voting_img.jpeg)
+
 With the events of 2020 plus the polarization in this country, it’s nearly impossible to find someone who doesn’t have an opinion (good or bad) on the President of the United States. However, this year it’s also become more clear how important local politicians and other elected officials are to our day-to-day lives. President Barack Obama said it best in his [recent Medium post](https://medium.com/@BarackObama/how-to-make-this-moment-the-turning-point-for-real-change-9fa209806067) discussing the George Floyd killing.
 
 > ...the elected officials who matter most in reforming police departments and the criminal justice system work at the state and local levels
