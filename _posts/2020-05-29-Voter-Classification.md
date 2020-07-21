@@ -3,6 +3,8 @@ layout: post
 title: Do Democrats like guns too? This and other thoughts after building a voter prediction model
 ---
 
+![Election_Results_2016](/images/2000px-United_States_presidential_election_results_by_county,_2016.png)
+
 For my third project at Metis, I decided to build a classification model that could predict which political party a person will vote for.
 
 Why would this be useful? The obvious answer is political campaigns need this information in order to develop solid campaign strategies. For instance, the candidate may ask “Where should I spend my time campaigning?”. For a presidential campaign, data driven campaign strategies that answer this question are already public knowledge. Such as:
