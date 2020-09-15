@@ -104,7 +104,7 @@ Arizona | 11 | 1.59%
 Maine | 4 | 0.09%
 
 
-You can see that the model expects Biden to flip Pennsylvania, Michigan, and Georgia but Trump will flip Minnesota and Maine. Some of these margins look pretty normal. There are definitely some weird results though. For instance, it would be quite a shock to see Trump win Iowa by 19 points or Biden to win New Hampshire by ~13 points given the current polling and previous results. Similarly, the races in Florida, Wisconsin, Minnesota, and Pennsylvania and Nevada will probably be a lot closer than predicted here. What's driving this? Let’s look at the coefficients for the linear regression model to see what features the model is using to predict:
+You can see that the model expects Biden to flip Pennsylvania, Michigan, and Georgia but Trump will flip Minnesota and Maine. Some of these margins look pretty normal. There are definitely some weird results though. For instance, it would be quite a shock to see Trump win Iowa by 19 points or Biden to win New Hampshire by ~13 points given the current polling and previous results. Similarly, the races in Florida, Wisconsin, Minnesota, Pennsylvania and Nevada will probably be a lot closer than predicted here. What's driving this? Let’s look at the coefficients for the linear regression model to see what features the model is using to predict:
 
 
 **Features** | **Coefficient**
@@ -137,12 +137,12 @@ The model has the coefficient of male population at -8.48. This means for every 
 
 #### Race/Ethnicity:
 
-* For every 1% increase in non-hispanic white population, the democratic margin decreases by 4.33 percentage points
-* For every 1% increase in hispanic population, the democratic margin increases by 3.04 percentage points
-* For every 1% increase in asian population, the democratic margin increases by 3.54 percentage points
+* For every 1% increase in the non-hispanic white population, the democratic margin decreases by 4.33 percentage points
+* For every 1% increase in the hispanic population, the democratic margin increases by 3.04 percentage points
+* For every 1% increase in the asian population, the democratic margin increases by 3.54 percentage points
 * The percentage of african americans feature has been excluded by the lasso model as the p-value was not significant and thus we couldn’t be sure what the relationship was here.
 
-These are all interesting. A larger white population is correlated with better Republican margins and larger hispanic and asian populations are correlated with better Democrat margins. These relationships also seem to be confirmed in recent polling however maybe the relationships aren’t as large as we might have thought. It’s disappointing that there was no relationship found with the percentage of african americans in a state. One possible answer for this can be found by looking at the states with the highest percentage of african americans in the population. The top 5 states/territories in order are: D.C., Mississippi, Louisiana, Georgia and Maryland. Right away you can see why the model would be confused on the effect of the african american population. Democrats have won D.C. and Maryland with huge margins in the last couple decades. On the other hand, Republicans have won Mississippi, Louisiana, and Georgia with high margins in the last couple decades. Only Georgia is getting close to a swing state but as we discussed that’s for more reasons than just the African American population. This is why we don’t just predict with one feature. Elections (and humans) are way more complex than that.
+These are all interesting. A larger white population is correlated with better Republican margins and larger hispanic and asian populations are correlated with better Democrat margins. These relationships also seem to be confirmed in recent polling however maybe the relationships aren’t as large as we might have thought. It’s disappointing that there was no relationship found with the percentage of african americans in a state. One possible answer for this can be found by looking at the states with the highest percentage of african americans in the population. The top 5 states/territories in order are: D.C., Mississippi, Louisiana, Georgia and Maryland. Right away you can see why the model would be confused on the effect of the african american population. Democrats have won D.C. and Maryland with huge margins in the last couple decades. On the other hand, Republicans have won Mississippi, Louisiana, and Georgia with high margins in the last couple decades. Only Georgia is getting close to a swing state but as we discussed that’s for more reasons than just the african american population. This is why we don’t just predict with one feature. Elections (and humans) are way more complex than that.
 
 #### Age:
 
@@ -169,7 +169,7 @@ Overfitting is especially easy to do because data scientists (myself included) o
 
 My hypothesis is that demographics can give us a lot of info on future election results. But it’s not the whole story. It’s probably not even 79.8% of the story as my adjusted R squared figure would claim. In fact, there’s a very good chance that my model is overfit and is not explaining a good portion of the variance in the dependent variable. For instance, here are two things that this model does not account for:
 
-1. It does not tell us how current events will impact this election. This year feels like the opposite of business as usual and that will naturally affect the election too. How will COVID-19 play a part in the winner? How will millions of lost jobs, the wildfires on the west coast, and the racial injustice protests affect the election? These questions are not answered by this model. 
+1. It does not tell us how current events will impact this election. This year feels like the opposite of business as usual and that will naturally affect the election too. How will COVID-19 play a part for the winner? How will millions of lost jobs, the wildfires on the west coast, and the racial injustice protests affect the election? These questions are not answered by this model. 
 1. Similarly, this model does not take the polls into account. Thus, some margin predictions look really weird if you’ve been paying attention to the polls. Obviously, since we’re asking people directly, polls can give us a much more updated idea on what the predicted margin of victory will be.
 
 ### Conclusions and Next Steps
