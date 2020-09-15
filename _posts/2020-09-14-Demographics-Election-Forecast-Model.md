@@ -3,7 +3,7 @@ layout: post
 title: My demographic based election forecasting model predicts a close race
 ---
 
-![electoral_college_map](/images/predicted_electoral_college_results)
+![electoral_college_map](/images/predicted_electoral_college_results.png)
 
 There are 50 days until the election. But in a year that feels like it will never end, that’s still a long time. Every day until the election, there will be an unlimited stream of polls and pundits pontificating about what they think will happen. Why? Voting is one of our main fundamental rights of being American citizens and the President serves all of us. This year especially, no matter which side you’re on, it feels like the stakes are incredibly high. I thought it would be fun to use my data skills to explore just how complex it is to build an election forecasting model. 
 
@@ -11,7 +11,11 @@ There are 50 days until the election. But in a year that feels like it will neve
 
 Any great model starts with great data. Luckily, when it comes to elections the data is nicely available. For U.S. presidential election historical data, I went to the [MIT election lab website](https://electionlab.mit.edu/data). I decided to download election results from 2000-2016 because the electoral college map for all elections before that looked very different from the typical maps we see today. In fact, some people believe that we are on the verge of yet another political landscape shift as states like Texas Arizona, and Georgia are competitive this year for the first time in decades. Finally, to keep things simple and explainable I decided to build a linear regression model that would predict democratic percentage margin of victory as the target variable. So any negative numbers in this column indicate a Republican victory in that state.  to scrape tweets for all of them. Below is an example of an API call I ran in command line to scrape tweets:
 
-Now that I know my target variable, I next had to figure out which data to use to predict it. Previously, I mentioned that Texas, Arizona, and Georgia are competitive for the first time in a while. This is largely due to changing demographics and (especially in Texas) urbanization. Young people in particular are flocking to the big cities in Texas and any state that is more urbanized and has a large young population tends to lean more democratic. According to the Census Bureau, from 2000 to 2018 Georgia has had the largest increase in the share african americans make up of the citizen voting age population. Also, according to the Census Bureau, Georgia is in the top half in the country for the percentage that whites with a college degree make up of both eligible white voters and likely 2020 white voters. These trends are not found in other southern states and whites with college degrees are a group that have trended towards the Democrats in recent years. Finally, Arizona and Texas both have large (and rising) hispanic populations. This is yet another voter group that tends to lean Democratic. You put all these factors together and it appears like a recipe for the Democrats to be competitive in more states in 2020. However, you have to be careful here because it was widely believed that the same thing would happen in Florida because of the rise in hispanic population but that hasn’t exactly panned out. So having said all of this, you can see how Demographic information might help us predict elections. To prove this out, I went to data.census.gov and pulled age, gender, and race/ethnicity data for each state from 2000-2016. I separately added median income per state (also from U.S. Census data) and region of the country that the state was in (i.e. West, Northeast, Midwest or South). 
+Now that I know my target variable, I next had to figure out which data to use to predict it. Previously, I mentioned that Texas, Arizona, and Georgia are competitive for the first time in a while. This is largely due to changing demographics and (especially in Texas) urbanization. Young people in particular are flocking to the big cities in Texas and any state that is more urbanized and has a large young population tends to lean more democratic. According to the Census Bureau, from 2000 to 2018 Georgia has had the largest increase in the share african americans make up of the citizen voting age population. Also, according to the Census Bureau, Georgia is in the top half in the country for the percentage that whites with a college degree make up of both eligible white voters and likely 2020 white voters. These trends are not found in other southern states and whites with college degrees are a group that have trended towards the Democrats in recent years. Finally, Arizona and Texas both have large (and rising) hispanic populations. This is yet another voter group that tends to lean Democratic. 
+
+You put all these factors together and it appears like a recipe for the Democrats to be competitive in more states in 2020. However, you have to be careful here because it was widely believed that the same thing would happen in Florida because of the rise in hispanic population but that hasn’t exactly panned out. 
+
+So having said all of this, you can see how Demographic information might help us predict elections. To prove this out, I went to data.census.gov and pulled age, gender, and race/ethnicity data for each state from 2000-2016. I separately added median income per state (also from U.S. Census data) and region of the country that the state was in (i.e. West, Northeast, Midwest or South). 
 
 So now for each year (2000, 2004, 2008, 2012, and 2016) I created a dataset that had the following features for each state:
 
@@ -37,9 +41,7 @@ Ultimately, I decided on a Lasso Regression model because it naturally “remove
 You can see below the states the model predicted Biden to win and his predicted margin of victory for each one.
 
 **State** | **Electoral College Votes** | **Predicted Percentage Margin of Victory**
-
 ------------ | ------------- | ------------- 
-
 District of Columbia | 3 | 92.17%
 Massachusetts | 11 | 37.20%
 California | 55 | 35.60%
@@ -66,9 +68,7 @@ Michigan | 16 | 0.45
 And here are the states that the model predicts Trump to win with his predicted margin of victory for each one:
 
 **State** | **Electoral College Votes** | **Predicted Percentage Margin of Victory**
-
 ------------ | ------------- | ------------- 
-
 South Dakota | 3 | 39.99
 West Virginia | 5 | 35.26
 North Dakota | 3 | 34.03
@@ -105,7 +105,6 @@ You can see that the model expects Biden to flip Pennsylvania, Michigan, and Geo
 
 **Features** | **Coefficient**
 ------------ | ------------- 
-
 30-44 year olds | 16.12
 45-64 year olds | 16.11
 15-29 year olds | 10.16
