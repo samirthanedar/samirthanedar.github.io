@@ -21,15 +21,16 @@ So having said all of this, you can see how Demographic information might help u
 
 So now for each year (2000, 2004, 2008, 2012, and 2016) I created a dataset that had the following features for each state:
 
+1. Total percentage of males
 1. Total percentage of females
 1. Total percentage of 15-29 year olds (Of course, anyone under the age of 18 can’t vote but the census dataset I used included minors in this age group)
 1. Total percentage of 30-44 year olds 
 1. Total percentage of 45-64 year olds 
 1. Total percentage of people aged 65 and above
 1. Total percentage of whites
-1. Total percentage of African-Americans
+1. Total percentage of African Americans
 1. Total percentage of Asians
-1. Total percentage of hispanics
+1. Total percentage of Hispanics
 1. Median income
 1. Region of the country the state is in
 1. Democratic margin of victory in the presidential election
