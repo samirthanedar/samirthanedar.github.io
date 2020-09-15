@@ -27,7 +27,7 @@ So now for each year (2000, 2004, 2008, 2012, and 2016) I created a dataset that
 1. Total percentage of 30-44 year olds 
 1. Total percentage of 45-64 year olds 
 1. Total percentage of people aged 65 and above
-1. Total percentage of whites
+1. Total percentage of Whites
 1. Total percentage of African Americans
 1. Total percentage of Asians
 1. Total percentage of Hispanics
@@ -57,51 +57,51 @@ New Jersey | 14 | 26.53%
 Connecticut | 7 | 24.49%
 Illinois | 20 | 17.75%
 Colorado | 9 | 15.62%
-New Hampshire| 4 | 12.92
-Nevada | 6 | 12.07
-Washington | 12 | 11.83
-Delaware | 3 | 9.64
-Oregon | 7 | 8.22
-New Mexico | 5 | 6.77
-Pennsylvania | 20 | 5.72
-Vermont | 3 | 3.82
-Georgia | 16 | 0.77
-Virginia | 13 | 0.69
-Michigan | 16 | 0.45
+New Hampshire| 4 | 12.92%
+Nevada | 6 | 12.07%
+Washington | 12 | 11.83%
+Delaware | 3 | 9.64%
+Oregon | 7 | 8.22%
+New Mexico | 5 | 6.77%
+Pennsylvania | 20 | 5.72%
+Vermont | 3 | 3.82%
+Georgia | 16 | 0.77%
+Virginia | 13 | 0.69%
+Michigan | 16 | 0.45%
 
 And here are the states that the model predicts Trump to win with his predicted margin of victory for each one:
 
 **State** | **Electoral College Votes** | **Predicted Percentage Margin of Victory for Trump**
 ------------ | ------------- | ------------- 
-South Dakota | 3 | 39.99
-West Virginia | 5 | 35.26
-North Dakota | 3 | 34.03
-Utah | 6 | 31.49
-Arkansas | 6 | 30.21
-Oklahoma | 7 | 30.16
-Idaho | 4 | 29.67
-Wyoming | 3 | 29.03
-Montana | 3 | 26.95
-Kentucky | 8 | 26.55
-Nebraska | 5 | 22.01
-Iowa | 6 | 19.63
-Mississippi | 6 | 18.28
-Alaska | 3 | 17.20
-Louisiana | 8 | 16.53
-Kansas | 6 | 16.15
-Tennessee | 11 | 14.05
-Alabama | 9 | 13.40
-South Carolina | 9 | 12.67
-Florida | 29 | 8.19
-Minnesota | 10 | 7.12
-Indiana | 11 | 6.44
-North Carolina | 15 | 5.97
-Wisconsin | 10 | 5.90
-Texas | 38 | 4.35
-Missouri | 10 | 4.29
-Ohio | 18 | 2.18
-Arizona | 11 | 1.59
-Maine | 4 | 0.09
+South Dakota | 3 | 39.99%
+West Virginia | 5 | 35.26%
+North Dakota | 3 | 34.03%
+Utah | 6 | 31.49%
+Arkansas | 6 | 30.21%
+Oklahoma | 7 | 30.16%
+Idaho | 4 | 29.67%
+Wyoming | 3 | 29.03%
+Montana | 3 | 26.95%
+Kentucky | 8 | 26.55%
+Nebraska | 5 | 22.01%
+Iowa | 6 | 19.63%
+Mississippi | 6 | 18.28%
+Alaska | 3 | 17.20%
+Louisiana | 8 | 16.53%
+Kansas | 6 | 16.15%
+Tennessee | 11 | 14.05%
+Alabama | 9 | 13.40%
+South Carolina | 9 | 12.67%
+Florida | 29 | 8.19%
+Minnesota | 10 | 7.12%
+Indiana | 11 | 6.44%
+North Carolina | 15 | 5.97%
+Wisconsin | 10 | 5.90%
+Texas | 38 | 4.35%
+Missouri | 10 | 4.29%
+Ohio | 18 | 2.18%
+Arizona | 11 | 1.59%
+Maine | 4 | 0.09%
 
 
 You can see that the model expects Biden to flip Pennsylvania, Michigan, and Georgia but Trump will flip Minnesota and Maine. Some of these margins look pretty normal. There are definitely some weird results though. For instance, it would be quite a shock to see Trump win Iowa by 19 points or Biden to win New Hampshire by ~13 points given the current polling and previous results. Similarly, the races in Florida, Wisconsin, Minnesota, and Pennsylvania and Nevada will probably be a lot closer than predicted here. What's driving this? Let’s look at the coefficients for the linear regression model to see what features the model is using to predict:
@@ -140,7 +140,7 @@ The model has the coefficient of male population at -8.48. This means for every 
 * For every 1% increase in non-hispanic white population, the democratic margin decreases by 4.33 percentage points
 * For every 1% increase in hispanic population, the democratic margin increases by 3.04 percentage points
 * For every 1% increase in asian population, the democratic margin increases by 3.54 percentage points
-* The percentage of African-Americans feature has been excluded by the lasso model as the p-value was not significant and thus we couldn’t be sure what the relationship was here.
+* The percentage of african americans feature has been excluded by the lasso model as the p-value was not significant and thus we couldn’t be sure what the relationship was here.
 
 These are all interesting. A larger white population is correlated with better Republican margins and larger hispanic and asian populations are correlated with better Democrat margins. These relationships also seem to be confirmed in recent polling however maybe the relationships aren’t as large as we might have thought. It’s disappointing that there was no relationship found with the percentage of african americans in a state. One possible answer for this can be found by looking at the states with the highest percentage of african americans in the population. The top 5 states/territories in order are: D.C., Mississippi, Louisiana, Georgia and Maryland. Right away you can see why the model would be confused on the effect of the african american population. Democrats have won D.C. and Maryland with huge margins in the last couple decades. On the other hand, Republicans have won Mississippi, Louisiana, and Georgia with high margins in the last couple decades. Only Georgia is getting close to a swing state but as we discussed that’s for more reasons than just the African American population. This is why we don’t just predict with one feature. Elections (and humans) are way more complex than that.
 
